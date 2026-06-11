@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { PLUSHIE_PRICE_USD, TOKEN_CA } from "@/lib/constants";
 import { usePegPrice } from "@/lib/price";
 import { formatPeg, formatPegPrice, formatUsd } from "@/lib/format";
-import { PlushiePig } from "@/components/PlushiePig";
+import Image from "next/image";
 import { FloatingCoins } from "@/components/FloatingCoins";
 import { CheckoutModal } from "@/components/CheckoutModal";
 
@@ -148,7 +148,14 @@ export function Hero() {
             animate={{ y: [0, -16, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <PlushiePig className="w-full drop-shadow-[0_30px_50px_rgba(4,12,32,0.6)]" />
+            <Image
+              src="/peg-plushie.png"
+              alt="The $PEG plushie — blue plush pig with the dollar mark on its forehead"
+              width={614}
+              height={830}
+              priority
+              className="mx-auto w-full max-w-[360px] drop-shadow-[0_30px_50px_rgba(4,12,32,0.6)]"
+            />
           </motion.div>
 
           {/* floating spec chips */}

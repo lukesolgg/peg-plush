@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-navy-950: #040c20;
+  --color-navy-900: #071534;
+  --color-navy-850: #0a1c45;
+  --color-navy-800: #0d2456;
+  --color-royal-700: #143578;
+  --color-royal-600: #1c49a4;
+  --color-royal-500: #2a5fc7;
+  --color-royal-400: #4a7fdd;
+  --color-sky-soft: #8fc0ff;
+  --color-sky-pale: #cfe2ff;
+  --color-pig-pink: #f5a8bb;
+  --color-pig-pink-deep: #ee8aa4;
+  --color-burn: #ff8a3d;
+  --color-burn-deep: #ff5c2e;
+  --color-mint: #4ade80;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --font-display: var(--font-baloo);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-flicker: flicker 1.6s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-18px);
+    }
+  }
+
+  @keyframes flicker {
+    0%,
+    100% {
+      transform: scaleY(1) translateY(0);
+      opacity: 1;
+    }
+    30% {
+      transform: scaleY(1.12) translateY(-2px);
+      opacity: 0.92;
+    }
+    60% {
+      transform: scaleY(0.94) translateY(1px);
+      opacity: 1;
+    }
   }
 }
 
+:root {
+  --background: #081735;
+  --foreground: #eef5ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  background:
+    radial-gradient(1200px 700px at 80% -10%, rgba(42, 95, 199, 0.55), transparent 60%),
+    radial-gradient(900px 600px at -10% 30%, rgba(28, 73, 164, 0.5), transparent 60%),
+    radial-gradient(1000px 800px at 50% 110%, rgba(20, 53, 120, 0.6), transparent 65%),
+    linear-gradient(180deg, #071534 0%, #0a1f4a 45%, #081735 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(143, 192, 255, 0.4);
+}
+
+/* Soft glassy card used across sections */
+.glass {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(143, 192, 255, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.glass-deep {
+  background: linear-gradient(160deg, rgba(7, 21, 52, 0.92), rgba(10, 28, 69, 0.88));
+  border: 1px solid rgba(143, 192, 255, 0.22);
+  backdrop-filter: blur(18px);
+}
+
+.text-glow {
+  text-shadow:
+    0 0 24px rgba(143, 192, 255, 0.45),
+    0 0 60px rgba(42, 95, 199, 0.35);
+}
+
+.scrollbar-slim::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-slim::-webkit-scrollbar-thumb {
+  background: rgba(143, 192, 255, 0.3);
+  border-radius: 999px;
 }

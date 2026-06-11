@@ -157,7 +157,7 @@ export function Hero() {
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
           >
-            <p className="font-display text-sm font-bold text-white">30cm of pig</p>
+            <p className="font-display text-sm font-bold text-white">30cm of peg</p>
             <p className="text-[11px] text-sky-soft/70">ultra-soft minky fabric</p>
           </motion.div>
           <motion.div

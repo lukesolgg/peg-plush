@@ -10,7 +10,7 @@ const FAQS = [
   },
   {
     q: "How does the 50% buyback & burn actually work?",
-    a: "Half of every $40 sale goes into a buyback pool. When the pool hits $5,000, it market-buys $PEG and sends the tokens to the burn address — permanently removing them from supply. Every burn will be a public, verifiable transaction.",
+    a: "Half of every $40 sale goes into a buyback pool. When the pool hits $500, it market-buys $PEG and sends the tokens to the burn address — permanently removing them from supply. Every burn will be a public, verifiable transaction.",
   },
   {
     q: "Why pay in $PEG instead of USDC?",

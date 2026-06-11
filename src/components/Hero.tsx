@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { asset, PLUSHIE_PRICE_USD, TOKEN_CA } from "@/lib/constants";
+import { PLUSHIE_PRICE_USD, TOKEN_CA } from "@/lib/constants";
 import { usePegPrice } from "@/lib/price";
 import { formatPeg, formatPegPrice, formatUsd } from "@/lib/format";
+import { PlushieSpin } from "@/components/PlushieSpin";
 import { FloatingCoins } from "@/components/FloatingCoins";
 import { CheckoutModal } from "@/components/CheckoutModal";
 
@@ -144,17 +145,10 @@ export function Hero() {
           <div className="absolute left-1/2 top-1/2 -z-10 h-[115%] w-[115%] -translate-x-1/2 -translate-y-1/2 animate-spin-slow rounded-full border border-dashed border-sky-soft/25" />
 
           <motion.div
-            animate={{ y: [0, -16, 0] }}
+            animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element -- unoptimized export; next/image drops basePath */}
-            <img
-              src={asset("/peg-plushie.png")}
-              alt="The $PEG plushie — blue plush pig with the dollar mark on its forehead"
-              width={614}
-              height={830}
-              className="mx-auto w-full max-w-[360px] drop-shadow-[0_30px_50px_rgba(4,12,32,0.6)]"
-            />
+            <PlushieSpin />
           </motion.div>
 
           {/* floating spec chips */}

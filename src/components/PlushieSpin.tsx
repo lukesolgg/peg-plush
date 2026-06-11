@@ -31,7 +31,11 @@ export function PlushieSpin() {
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
-      e.currentTarget.setPointerCapture(e.pointerId);
+      try {
+        e.currentTarget.setPointerCapture(e.pointerId);
+      } catch {
+        // pointer capture is best-effort; drag still works without it
+      }
       dragStart.current = { x: e.clientX, frame };
       interacted.current = true;
       setDragging(true);
@@ -64,8 +68,9 @@ export function PlushieSpin() {
       role="img"
       aria-label="The $PEG plushie — drag to spin it around"
     >
-      {/* all frames stacked; only the active one is visible (no swap flicker) */}
-      <div className="relative mx-auto w-full max-w-[360px]">
+      {/* all frames stacked; only the active one is visible (no swap flicker).
+          single drop-shadow on the wrapper — per-frame filters are too heavy */}
+      <div className="relative mx-auto w-full max-w-[360px] drop-shadow-[0_30px_50px_rgba(4,12,32,0.6)]">
         {FRAMES.map((src, i) => (
           // eslint-disable-next-line @next/next/no-img-element -- unoptimized export; next/image drops basePath
           <img
@@ -75,9 +80,7 @@ export function PlushieSpin() {
             width={845}
             height={1024}
             draggable={false}
-            className={`w-full drop-shadow-[0_30px_50px_rgba(4,12,32,0.6)] ${
-              i === frame ? "relative opacity-100" : "absolute inset-0 opacity-0"
-            }`}
+            className={`w-full ${i === frame ? "relative opacity-100" : "absolute inset-0 opacity-0"}`}
           />
         ))}
       </div>
